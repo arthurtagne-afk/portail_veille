@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Formulaire de recensement des KPI des banques au Cameroun"
+    />
+    <title>Emplacements des Agences/GAB</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-blue-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <header class="flex flex-col items-center mb-8">
+        <img src="logo.png" alt="Logo MI" class="h-16 mb-4" />
+        <h1 class="text-2xl font-bold text-gray-800 text-center">
+          Formulaire de Recensement Emplacements des Agences/GAB/Guichet des
+          Banques
+        </h1>
+      </header>
+
+      <form
+        id="form"
+        class="bg-white p-6 rounded-xl shadow-lg"
+        method="POST"
+        action="#"
+      >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div class="form-group relative">
+            <label
+              for="etablissement"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Établissement <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="L'institution bancaire concernée par les données"
+                aria-describedby="etablissement-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="etablissement"
+              name="etablissement_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Access Bank</option>
+              <option>AFG Bank</option>
+              <option>AFB</option>
+              <option>BANGE</option>
+              <option>BACM</option>
+              <option>BC-PME</option>
+              <option>BGFIBank</option>
+              <option>BICEC</option>
+              <option>Citibank</option>
+              <option>CBC</option>
+              <option>CCA-BANK</option>
+              <option>Ecobank</option>
+              <option>La Régionale</option>
+              <option>NFC-Bank</option>
+              <option>SCB-Cameroun</option>
+              <option>SGC</option>
+              <option>SCBC</option>
+              <option>UBC</option>
+              <option>UBA</option>
+            </select>
+            <input
+              type="text"
+              id="etablissement_custom"
+              name="etablissement_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre établissement"
+              aria-required="false"
+            />
+            <div
+              id="etablissement-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              L'institution bancaire concernée par les données
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="type"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Type <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le type d'infrastructure ou de service recensé (ex. : Agence, GAB)"
+                aria-describedby="type-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="type"
+              name="type_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Agence</option>
+              <option>TPE</option>
+              <option>GAB</option>
+              <option>DAB</option>
+            </select>
+            <input
+              type="text"
+              id="type_custom"
+              name="type_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre type"
+              aria-required="false"
+            />
+            <div
+              id="type-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le type d'infrastructure ou de service recensé (ex. : Agence, GAB)
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="region"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Région <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La région administrative où se trouve l'infrastructure"
+                aria-describedby="region-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="region"
+              name="region_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Adamaoua</option>
+              <option>Centre</option>
+              <option>Est</option>
+              <option>Extrême-Nord</option>
+              <option>Littoral</option>
+              <option>Nord</option>
+              <option>Nord-Ouest</option>
+              <option>Ouest</option>
+              <option>Sud</option>
+              <option>Sud-Ouest</option>
+            </select>
+            <input
+              type="text"
+              id="region_custom"
+              name="region_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez une autre région"
+              aria-required="false"
+            />
+            <div
+              id="region-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La région administrative où se trouve l'infrastructure
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="ville"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Ville <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La ville où se trouve l'infrastructure"
+                aria-describedby="ville-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="ville"
+              name="ville"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="ville-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La ville où se trouve l'infrastructure
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="quartier"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Quartier <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le quartier spécifique où se trouve l'infrastructure"
+                aria-describedby="quartier-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="quartier"
+              name="quartier"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="quartier-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le quartier spécifique où se trouve l'infrastructure
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="localisation"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Localisation <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Les détails précis de l'emplacement (ex. : adresse, repères)"
+                aria-describedby="localisation-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="localisation"
+              name="localisation"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="localisation-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Les détails précis de l'emplacement (ex. : adresse, repères)
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="nom_agence"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nom Agence <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le nom officiel de l'agence ou du point de service"
+                aria-describedby="nom_agence-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="nom_agence"
+              name="nom_agence"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="nom_agence-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le nom officiel de l'agence ou du point de service
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="date_info"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Date Info
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La date à laquelle l'information a été obtenue"
+                aria-describedby="date_info-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="date"
+              id="date_info"
+              name="date_info"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            />
+            <div
+              id="date_info-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La date à laquelle l'information a été obtenue
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="date_collecte"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Date Collecte
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La date de saisie des données (préremplie automatiquement)"
+                aria-describedby="date_collecte-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="date_collecte"
+              name="date_collecte"
+              class="w-full p-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed"
+              readonly
+            />
+            <div
+              id="date_collecte-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La date de saisie des données (préremplie automatiquement)
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="collecteur"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Collecteur <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La personne responsable de la collecte des données"
+                aria-describedby="collecteur-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="collecteur"
+              name="collecteur_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option>Jude</option>
+              <option>Elie</option>
+              <option>Rostand</option>
+              <option>Ismael</option>
+              <option>Edwin</option>
+              <option>Dassi</option>
+              <option>Marius</option>
+              <option>Stagiaire</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="collecteur_custom"
+              name="collecteur_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre collecteur"
+              aria-required="false"
+            />
+            <div
+              id="collecteur-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La personne responsable de la collecte des données
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="pays"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Pays <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le pays où l'infrastructure est située"
+                aria-describedby="pays-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="pays"
+              name="pays_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Cameroun</option>
+              <option>Gabon</option>
+              <option>RCA</option>
+              <option>Tchad</option>
+              <option>Guinée Équatoriale</option>
+              <option>Congo</option>
+            </select>
+            <input
+              type="text"
+              id="pays_custom"
+              name="pays_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre pays"
+              aria-required="false"
+            />
+            <div
+              id="pays-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le pays où l'infrastructure est située
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions flex justify-end space-x-4">
+          <a href="index.html" id="home-button">
+            <button
+              type="button"
+              id="back-button"
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Retour
+            </button>
+          </a>
+          <button
+            type="button"
+            id="reset-button"
+            class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            Effacer
+          </button>
+          <button
+            type="submit"
+            id="submit-button"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+          >
+            <span>Enregistrer</span>
+            <svg
+              class="hidden animate-spin h-5 w-5 ml-2 text-white"
+              id="spinner"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div id="message" class="hidden mt-4 p-4 rounded-lg text-white"></div>
+    </div>
+
+    <script>
+      // Auto-fill collection date
+      document.getElementById("date_collecte").value = new Date()
+        .toISOString()
+        .split("T")[0];
+
+      const form = document.getElementById("form");
+      const submitButton = document.getElementById("submit-button");
+      const resetButton = document.getElementById("reset-button");
+      const messageDiv = document.getElementById("message");
+      const spinner = document.getElementById("spinner");
+      const etablissementSelect = document.getElementById("etablissement");
+      const etablissementCustom = document.getElementById(
+        "etablissement_custom"
+      );
+      const typeSelect = document.getElementById("type");
+      const typeCustom = document.getElementById("type_custom");
+      const collecteurSelect = document.getElementById("collecteur");
+      const collecteurCustom = document.getElementById("collecteur_custom");
+
+      // Toggle custom input visibility based on selection
+      etablissementSelect.addEventListener("change", () => {
+        if (etablissementSelect.value === "autre") {
+          etablissementCustom.classList.remove("hidden");
+          etablissementCustom.required = true;
+          etablissementCustom.setAttribute("aria-required", "true");
+        } else {
+          etablissementCustom.classList.add("hidden");
+          etablissementCustom.required = false;
+          etablissementCustom.setAttribute("aria-required", "false");
+          etablissementCustom.value = "";
+        }
+      });
+
+      typeSelect.addEventListener("change", () => {
+        if (typeSelect.value === "autre") {
+          typeCustom.classList.remove("hidden");
+          typeCustom.required = true;
+          typeCustom.setAttribute("aria-required", "true");
+        } else {
+          typeCustom.classList.add("hidden");
+          typeCustom.required = false;
+          typeCustom.setAttribute("aria-required", "false");
+          typeCustom.value = "";
+        }
+      });
+
+      collecteurSelect.addEventListener("change", () => {
+        if (collecteurSelect.value === "autre") {
+          collecteurCustom.classList.remove("hidden");
+          collecteurCustom.required = true;
+          collecteurCustom.setAttribute("aria-required", "true");
+        } else {
+          collecteurCustom.classList.add("hidden");
+          collecteurCustom.required = false;
+          collecteurCustom.setAttribute("aria-required", "false");
+          collecteurCustom.value = "";
+        }
+      });
+
+      const regionSelect = document.getElementById("region");
+      const regionCustom = document.getElementById("region_custom");
+
+      regionSelect.addEventListener("change", () => {
+        if (regionSelect.value === "autre") {
+          regionCustom.classList.remove("hidden");
+          regionCustom.required = true;
+          regionCustom.setAttribute("aria-required", "true");
+        } else {
+          regionCustom.classList.add("hidden");
+          regionCustom.required = false;
+          regionCustom.setAttribute("aria-required", "false");
+          regionCustom.value = "";
+        }
+      });
+
+      const paysSelect = document.getElementById("pays");
+      const paysCustom = document.getElementById("pays_custom");
+
+      paysSelect.addEventListener("change", () => {
+        if (paysSelect.value === "autre") {
+          paysCustom.classList.remove("hidden");
+          paysCustom.required = true;
+          paysCustom.setAttribute("aria-required", "true");
+        } else {
+          paysCustom.classList.add("hidden");
+          paysCustom.required = false;
+          paysCustom.setAttribute("aria-required", "false");
+          paysCustom.value = "";
+        }
+      });
+
+      // Show tooltips on hover or focus
+      document.querySelectorAll("[data-tooltip]").forEach((element) => {
+        const tooltipId = element.getAttribute("aria-describedby");
+        const tooltip = document.getElementById(tooltipId);
+
+        element.addEventListener("mouseenter", () => {
+          tooltip.classList.remove("hidden");
+        });
+        element.addEventListener("mouseleave", () => {
+          tooltip.classList.add("hidden");
+        });
+        element.addEventListener("focus", () => {
+          tooltip.classList.remove("hidden");
+        });
+        element.addEventListener("blur", () => {
+          tooltip.classList.add("hidden");
+        });
+      });
+
+      resetButton.addEventListener("click", () => {
+        form.reset();
+        document.getElementById("date_collecte").value = new Date()
+          .toISOString()
+          .split("T")[0];
+        etablissementCustom.classList.add("hidden");
+        etablissementCustom.required = false;
+        etablissementCustom.setAttribute("aria-required", "false");
+        etablissementCustom.value = "";
+
+        typeCustom.classList.add("hidden");
+        typeCustom.required = false;
+        typeCustom.setAttribute("aria-required", "false");
+        typeCustom.value = "";
+
+        collecteurCustom.classList.add("hidden");
+        collecteurCustom.required = false;
+        collecteurCustom.setAttribute("aria-required", "false");
+        collecteurCustom.value = "";
+
+        messageDiv.classList.add("hidden");
+        regionCustom.classList.add("hidden");
+        regionCustom.required = false;
+        regionCustom.setAttribute("aria-required", "false");
+        regionCustom.value = "";
+
+        paysCustom.classList.add("hidden");
+        paysCustom.required = false;
+        paysCustom.setAttribute("aria-required", "false");
+        paysCustom.value = "";
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        messageDiv.textContent = "Envoi en cours...";
+        messageDiv.classList.remove("hidden", "bg-red-500", "bg-green-500");
+        messageDiv.classList.add("bg-yellow-500");
+        submitButton.disabled = true;
+        spinner.classList.remove("hidden");
+
+        try {
+          const formData = new FormData(form);
+          const formDataObj = {};
+
+          // Initialize fields
+          formDataObj["etablissement"] =
+            formData.get("etablissement_select") === "autre"
+              ? formData.get("etablissement_custom") || ""
+              : formData.get("etablissement_select") || "";
+          formDataObj["type"] =
+            formData.get("type_select") === "autre"
+              ? formData.get("type_custom") || ""
+              : formData.get("type_select") || "";
+          formDataObj["collecteur"] =
+            formData.get("collecteur_select") === "autre"
+              ? formData.get("collecteur_custom") || ""
+              : formData.get("collecteur_select") || "";
+          formDataObj["region"] =
+            formData.get("region_select") === "autre"
+              ? formData.get("region_custom") || ""
+              : formData.get("region_select") || "";
+
+          formDataObj["pays"] =
+            formData.get("pays_select") === "autre"
+              ? formData.get("pays_custom") || ""
+              : formData.get("pays_select") || "";
+
+          // Add other fields
+          for (let [key, value] of formData.entries()) {
+            if (
+              ![
+                "etablissement_select",
+                "etablissement_custom",
+                "type_select",
+                "type_custom",
+                "collecteur_select",
+                "collecteur_custom",
+                "region_custom",
+                "pays_custom",
+              ].includes(key)
+            ) {
+              formDataObj[key] = value;
+            }
+          }
+
+          // Ensure required fields are not empty
+          if (!formDataObj["etablissement"]) {
+            throw new Error("Veuillez sélectionner ou entrer un établissement");
+          }
+          if (!formDataObj["type"]) {
+            throw new Error("Veuillez sélectionner ou entrer un type");
+          }
+          if (!formDataObj["collecteur"]) {
+            throw new Error("Veuillez sélectionner ou entrer un collecteur");
+          }
+          if (!formDataObj["region"]) {
+            throw new Error("Veuillez sélectionner ou entrer une région");
+          }
+          if (!formDataObj["pays"]) {
+            throw new Error("Veuillez sélectionner ou entrer un pays");
+          }
+
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbxXw1boHjfR5SaYYDhfvNy4dCHwQR96S0zVZNcTXyFYW-svRIYsg3KIMAq-tuTaNe_H/exec";
+          const response = await fetch(scriptURL, {
+            redirect: "follow",
+            method: "POST",
+            body: JSON.stringify(formDataObj),
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          });
+
+          const data = await response.json();
+
+          if (data.status === "success") {
+            const { etablissement, nom_agence, collecteur } = formDataObj;
+            window.location.href = `confirmation.html?etablissement=${encodeURIComponent(
+              etablissement
+            )}&agence=${encodeURIComponent(
+              nom_agence
+            )}&collecteur=${encodeURIComponent(collecteur)}`;
+          } else {
+            throw new Error(data.message || "Échec de l'envoi");
+          }
+        } catch (error) {
+          console.error("Erreur :", error);
+          messageDiv.textContent = "Erreur : " + error.message;
+          messageDiv.classList.remove("bg-yellow-500");
+          messageDiv.classList.add("bg-red-500");
+        } finally {
+          submitButton.disabled = false;
+          spinner.classList.add("hidden");
+          setTimeout(() => {
+            messageDiv.classList.add("hidden");
+          }, 4000);
+        }
+      });
+    </script>
+  </body>
+</html>

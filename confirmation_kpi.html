@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Confirmation de la soumission des données KPI des banques au Cameroun"
+    />
+    <title>Confirmation de Soumission</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom styles for animation */
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <!-- Main container -->
+    <div class="container mx-auto px-4 py-12 max-w-3xl">
+      <!-- Header section -->
+      <header class="flex flex-col items-center mb-8" role="banner">
+        <img
+          src="logo.png"
+          alt="Logo du Cabinet"
+          class="h-20 mb-6 object-contain"
+          onerror="this.src='https://via.placeholder.com/150x80?text=Logo+Cabinet';"
+        />
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center">
+          Confirmation de Soumission
+        </h1>
+      </header>
+
+      <!-- Main content -->
+      <main
+        class="bg-white rounded-xl shadow-lg p-6 md:p-8 fade-in"
+        role="main"
+      >
+        <div class="text-center">
+          <svg
+            class="mx-auto h-12 w-12 text-green-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <h2 class="mt-4 text-xl md:text-2xl font-semibold text-gray-700">
+            Données enregistrées avec succès !
+          </h2>
+          <p class="mt-2 text-gray-600">
+            Merci pour votre soumission. Voici les détails de votre
+            enregistrement :
+          </p>
+        </div>
+
+        <!-- Submission details -->
+        <div class="mt-6 border-t border-gray-200 pt-4">
+          <dl class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6">
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Établissement</dt>
+              <dd id="etablissement" class="mt-1 text-lg text-gray-900"></dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Ville</dt>
+              <dd id="ville" class="mt-1 text-lg text-gray-900"></dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Collecteur</dt>
+              <dd id="collecteur" class="mt-1 text-lg text-gray-900"></dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">
+                Date de soumission
+              </dt>
+              <dd id="date" class="mt-1 text-lg text-gray-900"></dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Back button -->
+        <div class="mt-8 text-center">
+          <a href="Kpi.html" id="new-entry-button">
+            <button
+              type="button"
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Enregistrer encore
+            </button>
+          </a>
+          <a
+            href="index.html"
+            class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200"
+            aria-label="Retourner au portail de collecte"
+          >
+            Retour au Portail
+          </a>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="mt-12 text-center text-gray-500 text-sm"
+        role="contentinfo"
+      >
+        <p>© 2025 Media Intelligence. Tous droits réservés.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Function to get query parameters from URL
+      function getQueryParams() {
+        const params = {};
+        const queryString = window.location.search.substring(1);
+        const queries = queryString.split("&");
+        queries.forEach((query) => {
+          const [key, value] = query.split("=");
+          if (key && value) {
+            params[decodeURIComponent(key)] = decodeURIComponent(value);
+          }
+        });
+        return params;
+      }
+
+      // Populate confirmation details
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = getQueryParams();
+        document.getElementById("etablissement").textContent =
+          params.etablissement || "Non spécifié";
+        document.getElementById("ville").textContent =
+          params.ville || "Non spécifié";
+        document.getElementById("collecteur").textContent =
+          params.collecteur || "Non spécifié";
+        document.getElementById("date").textContent =
+          new Date().toLocaleDateString("fr-FR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+      });
+    </script>
+  </body>
+</html>

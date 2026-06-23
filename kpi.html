@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Formulaire de recensement des KPI des banques au Cameroun"
+    />
+    <title>Recensement KPI Banques</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-blue-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <header class="flex flex-col items-center mb-8">
+        <img src="logo.png" alt="Logo MI" class="h-16 mb-4" />
+        <h1 class="text-2xl font-bold text-gray-800 text-center">
+          Formulaire de Recensement des KPI
+        </h1>
+      </header>
+      <form
+        id="form"
+        class="bg-white p-6 rounded-xl shadow-lg"
+        method="POST"
+        action="#"
+      >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <!-- Établissement -->
+          <div>
+            <label
+              for="etablissement"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Établissement
+              <span class="text-red-500">*</span>
+              <span
+                data-tooltip
+                aria-describedby="tooltip-etablissement"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-etablissement"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute shopping-cart"
+            >
+              Sélectionnez l'établissement ou ajoutez-en un nouveau.
+            </div>
+            <select
+              id="etablissement"
+              name="etablissement_select"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="" disabled selected>
+                Sélectionnez un établissement
+              </option>
+
+              <option value="autre">Autre</option>
+              <option value="Access Bank">Access Bank</option>
+              <option value="AFG Bank">AFG Bank</option>
+              <option value="Afriland First Bank">Afriland First Bank</option>
+              <option value="BACM">BACM</option>
+              <option value="BANGE">BANGE</option>
+              <option value="BC-PME">BC-PME</option>
+              <option value="BGFIBank">BGFIBank</option>
+              <option value="BICEC">BICEC</option>
+              <option value="CBC">CBC</option>
+              <option value="CCA-BANK">CCA-BANK</option>
+              <option value="Citibank">Citibank</option>
+              <option value="Ecobank">Ecobank</option>
+              <option value="La Régionale">La Régionale</option>
+              <option value="NFC-Bank">NFC-Bank</option>
+              <option value="SCB-Cameroun">SCB-Cameroun</option>
+              <option value="SCBC">SCBC</option>
+              <option value="SGC">SGC</option>
+              <option value="UBA">UBA</option>
+              <option value="UBC">UBC</option>
+            </select>
+            <input
+              type="text"
+              id="etablissement_custom"
+              name="etablissement_custom"
+              class="mt-2 hidden w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Entrez le nom de l'établissement"
+            />
+          </div>
+
+          <!-- KPI -->
+          <div>
+            <label for="type" class="block text-sm font-medium text-gray-700">
+              KPI
+              <span class="text-red-500">*</span>
+              <span
+                data-tooltip
+                aria-describedby="tooltip-type"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-type"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute"
+            >
+              Sélectionnez le type de KPI ou ajoutez-en un nouveau.
+            </div>
+            <select
+              id="type"
+              name="type_select"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="" disabled selected>Sélectionnez un KPI</option>
+              <option value="Date d’implantation sur le marché local">
+                Date d’implantation sur le marché local
+              </option>
+              <option value="Nombre d'agence">Nombre d'agence</option>
+              <option value="Nombre de DAB (ou GAB)">
+                Nombre de DAB (ou GAB)
+              </option>
+              <option value="Nombre de compte (en milliers)">
+                Nombre de compte (en milliers)
+              </option>
+              <option value="Montant de crédit accordé">
+                Montant de crédit accordé
+              </option>
+              <option value="Nombre de TPE">Nombre de TPE</option>
+              <option value="Capital social (en milliards de FCFA)">
+                Capital social (en milliards de FCFA)
+              </option>
+              <option value="Taille du portefeuille client (en millier)">
+                Taille du portefeuille client (en millier)
+              </option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="type_custom"
+              name="type_custom"
+              class="mt-2 hidden w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Entrez un autre KPI"
+            />
+          </div>
+
+          <!-- Valeur du KPI -->
+          <div>
+            <label
+              for="valeur_kpi"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Valeur du KPI
+              <span class="text-red-500">*</span>
+              <span
+                data-tooltip
+                aria-describedby="tooltip-valeur"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-valeur"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute"
+            >
+              Entrez la valeur du KPI (nombre ou texte, selon le type).
+            </div>
+            <input
+              type="text"
+              id="valeur_kpi"
+              name="valeur_kpi"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+              placeholder="Ex: 4 ou 01/01/2020"
+            />
+          </div>
+
+          <!-- Ville -->
+          <div>
+            <label for="ville" class="block text-sm font-medium text-gray-700">
+              Ville ou Pays
+              <span
+                data-tooltip
+                aria-describedby="tooltip-ville"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-ville"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute"
+            >
+              Sélectionnez une zone ou ajoutez-en une nouvelle (optionnel).
+            </div>
+            <select
+              id="ville"
+              name="ville_select"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="" disabled selected>Sélectionnez une zone</option>
+              <option value="autre">Autre</option>
+              <option value="Yaoundé">Yaoundé</option>
+              <option value="Douala">Douala</option>
+              <option value="Bamenda">Bamenda</option>
+              <option value="Cameroun">Cameroun</option>
+              <option value="Gabon">Gabon</option>
+              <option value="Centrafrique">Centrafrique</option>
+              <option value="Tchad">Tchad</option>
+              <option value="Guinée-Equatoriale">Guinée Equatoriale</option>
+              <option value="Congo-Brazzaville">Congo Brazzaville</option>
+            </select>
+            <input
+              type="text"
+              id="ville_custom"
+              name="ville_custom"
+              class="mt-2 hidden w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Entrez le nom de la ville"
+            />
+          </div>
+
+          <!-- Date de collecte -->
+          <div>
+            <label
+              for="date_collecte"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Date de collecte
+              <span class="text-red-500">*</span>
+              <span
+                data-tooltip
+                aria-describedby="tooltip-date-collecte"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-date-collecte"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute"
+            >
+              Date à laquelle les données ont été collectées.
+            </div>
+            <input
+              type="date"
+              id="date_collecte"
+              name="date_collecte"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
+          <!-- Date de publication -->
+          <div>
+            <label
+              for="date_publication"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Date de publication
+              <span class="text-red-500">*</span>
+              <span
+                data-tooltip
+                aria-describedby="tooltip-date-publication"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-date-publication"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute"
+            >
+              Date à laquelle les données seront publiées.
+            </div>
+            <input
+              type="date"
+              id="date_publication"
+              name="date_publication"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
+          <!-- Collecteur -->
+          <div>
+            <label
+              for="collecteur"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Collecteur
+              <span class="text-red-500">*</span>
+              <span
+                data-tooltip
+                aria-describedby="tooltip-collecteur"
+                class="ml-1 text-gray-500 cursor-help"
+                >ⓘ</span
+              >
+            </label>
+            <div
+              id="tooltip-collecteur"
+              class="hidden text-sm text-gray-600 bg-gray-100 p-2 rounded absolute"
+            >
+              Sélectionnez le collecteur ou ajoutez-en un nouveau.
+            </div>
+            <select
+              id="collecteur"
+              name="collecteur_select"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="" disabled selected>
+                Sélectionnez un collecteur
+              </option>
+              <option>Elie</option>
+              <option>Rostant</option>
+              <option>Ismael</option>
+              <option>Edwin</option>
+              <option>Dassi</option>
+              <option>Marius</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="collecteur_custom"
+              name="collecteur_custom"
+              class="mt-2 hidden w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Entrez le nom du collecteur"
+            />
+          </div>
+        </div>
+
+        <!-- Message div -->
+        <div
+          id="message"
+          class="hidden text-white p-2 rounded mt-4 text-center"
+        ></div>
+
+        <!-- Buttons -->
+        <div class="form-actions flex justify-end mt-6 space-x-4">
+          <a href="index.html" id="home-button">
+            <button
+              type="button"
+              id="back-button"
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Retour
+            </button>
+          </a>
+          <button
+            type="button"
+            id="reset-button"
+            class="bg-red-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+          >
+            Réinitialiser
+          </button>
+          <button
+            type="submit"
+            id="submit-button"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center"
+          >
+            Envoyer
+            <svg
+              id="spinner"
+              class="animate-spin h-5 w-5 mr-2 hidden"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+    <script>
+      // Auto-fill collection date
+      document.getElementById("date_collecte").value = new Date()
+        .toISOString()
+        .split("T")[0];
+
+      const form = document.getElementById("form");
+      const submitButton = document.getElementById("submit-button");
+      const resetButton = document.getElementById("reset-button");
+      const messageDiv = document.getElementById("message");
+      const spinner = document.getElementById("spinner");
+      const etablissementSelect = document.getElementById("etablissement");
+      const etablissementCustom = document.getElementById(
+        "etablissement_custom"
+      );
+      const typeSelect = document.getElementById("type");
+      const typeCustom = document.getElementById("type_custom");
+      const collecteurSelect = document.getElementById("collecteur");
+      const collecteurCustom = document.getElementById("collecteur_custom");
+      const villeSelect = document.getElementById("ville");
+      const villeCustom = document.getElementById("ville_custom");
+
+      // Toggle custom input visibility based on selection
+      etablissementSelect.addEventListener("change", () => {
+        if (etablissementSelect.value === "autre") {
+          etablissementCustom.classList.remove("hidden");
+          etablissementCustom.required = true;
+          etablissementCustom.setAttribute("aria-required", "true");
+        } else {
+          etablissementCustom.classList.add("hidden");
+          etablissementCustom.required = false;
+          etablissementCustom.setAttribute("aria-required", "false");
+          etablissementCustom.value = "";
+        }
+      });
+
+      typeSelect.addEventListener("change", () => {
+        if (typeSelect.value === "autre") {
+          typeCustom.classList.remove("hidden");
+          typeCustom.required = true;
+          typeCustom.setAttribute("aria-required", "true");
+        } else {
+          typeCustom.classList.add("hidden");
+          typeCustom.required = false;
+          typeCustom.setAttribute("aria-required", "false");
+          typeCustom.value = "";
+        }
+      });
+
+      collecteurSelect.addEventListener("change", () => {
+        if (collecteurSelect.value === "autre") {
+          collecteurCustom.classList.remove("hidden");
+          collecteurCustom.required = true;
+          collecteurCustom.setAttribute("aria-required", "true");
+        } else {
+          collecteurCustom.classList.add("hidden");
+          collecteurCustom.required = false;
+          collecteurCustom.setAttribute("aria-required", "false");
+          collecteurCustom.value = "";
+        }
+      });
+
+      villeSelect.addEventListener("change", () => {
+        if (villeSelect.value === "autre") {
+          villeCustom.classList.remove("hidden");
+          villeCustom.required = true;
+          villeCustom.setAttribute("aria-required", "true");
+        } else {
+          villeCustom.classList.add("hidden");
+          villeCustom.required = false;
+          villeCustom.setAttribute("aria-required", "false");
+          villeCustom.value = "";
+        }
+      });
+
+      // Show tooltips on hover or focus
+      document.querySelectorAll("[data-tooltip]").forEach((element) => {
+        const tooltipId = element.getAttribute("aria-describedby");
+        const tooltip = document.getElementById(tooltipId);
+
+        element.addEventListener("mouseenter", () => {
+          tooltip.classList.remove("hidden");
+        });
+        element.addEventListener("mouseleave", () => {
+          tooltip.classList.add("hidden");
+        });
+        element.addEventListener("focus", () => {
+          tooltip.classList.remove("hidden");
+        });
+        element.addEventListener("blur", () => {
+          tooltip.classList.add("hidden");
+        });
+      });
+
+      resetButton.addEventListener("click", () => {
+        form.reset();
+        document.getElementById("date_collecte").value = new Date()
+          .toISOString()
+          .split("T")[0];
+        etablissementCustom.classList.add("hidden");
+        etablissementCustom.required = false;
+        etablissementCustom.setAttribute("aria-required", "false");
+        etablissementCustom.value = "";
+        typeCustom.classList.add("hidden");
+        typeCustom.required = false;
+        typeCustom.setAttribute("aria-required", "false");
+        typeCustom.value = "";
+        collecteurCustom.classList.add("hidden");
+        collecteurCustom.required = false;
+        collecteurCustom.setAttribute("aria-required", "false");
+        collecteurCustom.value = "";
+        villeCustom.classList.add("hidden");
+        villeCustom.required = false;
+        villeCustom.setAttribute("aria-required", "false");
+        villeCustom.value = "";
+        messageDiv.classList.add("hidden");
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        messageDiv.textContent = "Envoi en cours...";
+        messageDiv.classList.remove("hidden", "bg-red-500", "bg-green-500");
+        messageDiv.classList.add("bg-yellow-500");
+        submitButton.disabled = true;
+        spinner.classList.remove("hidden");
+
+        try {
+          const formData = new FormData(form);
+          const formDataObj = {};
+
+          // Process form data
+          for (let [key, value] of formData.entries()) {
+            if (key.endsWith("_select")) {
+              const baseKey = key.slice(0, -7); // remove "_select"
+              if (value === "autre") {
+                formDataObj[baseKey] = formData.get(`${baseKey}_custom`) || "";
+              } else {
+                formDataObj[baseKey] = value;
+              }
+            } else if (!key.endsWith("_custom")) {
+              formDataObj[key] = value;
+            }
+          }
+
+          if (!formDataObj["etablissement"]) {
+            throw new Error("Veuillez sélectionner ou entrer un établissement");
+          }
+          if (!formDataObj["type"]) {
+            throw new Error("Veuillez sélectionner ou entrer un type");
+          }
+          if (!formDataObj["collecteur"]) {
+            throw new Error("Veuillez sélectionner ou entrer un collecteur");
+          }
+          if (!formDataObj["valeur_kpi"]) {
+            throw new Error("Veuillez entrer une valeur pour le KPI");
+          }
+          if (!formDataObj["date_collecte"]) {
+            throw new Error("Veuillez entrer une date de collecte");
+          }
+          if (!formDataObj["date_publication"]) {
+            throw new Error("Veuillez entrer une date de publication");
+          }
+
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbzIXBrICuyKtrncW6hFxvWUrQKZQqnT28bGp3ySNtSmq226RtP3qCaP11k7ARNFZDTtmg/exec";
+
+          const response = await fetch(scriptURL, {
+            redirect: "follow",
+            method: "POST",
+            body: JSON.stringify(formDataObj),
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          });
+
+          if (response.status === 200) {
+            const { etablissement, ville, collecteur } = formDataObj;
+            window.location.href = `confirmation_kpi.html?etablissement=${encodeURIComponent(
+              etablissement
+            )}&ville=${encodeURIComponent(
+              ville || ""
+            )}&collecteur=${encodeURIComponent(collecteur)}`;
+          } else {
+            throw new Error("Erreur de communication avec le serveur");
+          }
+        } catch (error) {
+          console.error("Erreur *--:", error.message);
+          messageDiv.textContent = "Erreur ---: " + error.message;
+          messageDiv.classList.remove("bg-yellow-500");
+          messageDiv.classList.add("bg-red-500");
+        } finally {
+          submitButton.disabled = false;
+          spinner.classList.add("hidden");
+          setTimeout(() => {
+            messageDiv.classList.add("hidden");
+          }, 4000);
+        }
+      });
+    </script>
+  </body>
+</html>

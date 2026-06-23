@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portail de collecte pour le recensement des KPI et la veille d'actualité des banques au Cameroun"
+    />
+    <title>Portail de Collecte</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .card:hover {
+        transform: translateY(-4px);
+      }
+      .card {
+        min-height: 120px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+      <header class="flex flex-col items-center mb-12" role="banner">
+        <img
+          src="logo.png"
+          alt="Logo du Cabinet"
+          class="h-20 mb-6 object-contain"
+          onerror="this.src='https://via.placeholder.com/150x80?text=Logo+Cabinet';"
+        />
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center">
+          Portail de Collecte des Données
+        </h1>
+        <p class="mt-2 text-gray-600 text-center text-sm md:text-base">
+          Recensement des KPI et veille d'actualité des banques
+        </p>
+      </header>
+
+      <main
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        role="main"
+      >
+        <!-- Card: Emplacements des Agences/GAB/Guichet -->
+        <a
+          href="recensementKpi.html"
+          class="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex items-center"
+          aria-label="Accéder au recensement des emplacements des agences, GAB et guichets des banques"
+        >
+          <div class="p-6 flex items-center space-x-4 w-full">
+            <span class="text-4xl" aria-hidden="true">🏦</span>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-700">
+              Emplacements des Agences/GAB
+            </h2>
+          </div>
+        </a>
+
+        <!-- Card: Veille d'Actualité -->
+        <a
+          href="veille.html"
+          class="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex items-center"
+          aria-label="Accéder à la collecte de la veille d'actualité"
+        >
+          <div class="p-6 flex items-center space-x-4 w-full">
+            <span class="text-4xl" aria-hidden="true">📰</span>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-700">
+              Veille d'Actualité
+            </h2>
+          </div>
+        </a>
+
+        <!-- Card: Recensement des KPI -->
+        <a
+          href="kpi.html"
+          class="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex items-center"
+          aria-label="Accéder au recensement des indicateurs clés de performance (KPI)"
+        >
+          <div class="p-6 flex items-center space-x-4 w-full">
+            <span class="text-4xl" aria-hidden="true">📊</span>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-700">
+              Recensement des KPI
+            </h2>
+          </div>
+        </a>
+
+        <!-- Card: Descente Terrain FTF -->
+        <a
+          href="descente_terrain.html"
+          class="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex items-center"
+          aria-label="Accéder au formulaire de descente terrain FTF"
+        >
+          <div class="p-6 flex items-center space-x-4 w-full">
+            <span class="text-4xl" aria-hidden="true">🚶</span>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-700">
+              Descente Terrain – FTF
+            </h2>
+          </div>
+        </a>
+      </main>
+
+      <footer
+        class="mt-12 text-center text-gray-500 text-sm"
+        role="contentinfo"
+      >
+        <p>&copy; 2025 Media Intelligence. Tous droits réservés.</p>
+      </footer>
+    </div>
+  </body>
+</html>

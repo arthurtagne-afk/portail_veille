@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Formulaire de collecte de veille d'actualité pour les établissements financiers"
+    />
+    <title>Collecte Veille Actualité</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-blue-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <header class="flex flex-col items-center mb-8">
+        <img src="logo.png" alt="Logo Mi" class="h-16 mb-4" />
+
+        <h1 class="text-2xl font-bold text-gray-800 text-center">
+          Collecte Veille d'Actualité
+        </h1>
+      </header>
+
+      <form
+        id="veille-form"
+        class="bg-white p-6 rounded-xl shadow-lg"
+        method="POST"
+        action="#"
+      >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div class="form-group relative">
+            <label
+              for="etablissement"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Établissement <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="L'entreprise principale concernée par l'information"
+                aria-describedby="etablissement-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="etablissement"
+              name="etablissement_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Access Bank</option>
+              <option>AGB</option>
+              <option>AFB</option>
+              <option>BANGE Bank</option>
+              <option>BACM</option>
+              <option>BC-PME</option>
+              <option>BGFI Bank</option>
+              <option>BICEC</option>
+              <option>Citibank</option>
+              <option>CBC</option>
+              <option>CCA-BANK</option>
+              <option>Ecobank</option>
+              <option>La Régionale</option>
+              <option>NFC-Bank</option>
+              <option>SCB-Cameroun</option>
+              <option>SGC</option>
+              <option>SCBC</option>
+              <option>UBC</option>
+              <option>UBA</option>
+              <option>Neero</option>
+              <option>Lemfi</option>
+              <option>TapTap Send</option>
+              <option>Juba Express</option>
+              <option>Russend</option>
+              <option>Wave</option>
+              <option>Express Union</option>
+            </select>
+            <input
+              type="text"
+              id="etablissement_custom"
+              name="etablissement_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre établissement"
+              aria-required="false"
+            />
+            <div
+              id="etablissement-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              L'entreprise principale concernée par l'information
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="secteur"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Secteur <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le secteur d'activité lié à l'entreprise"
+                aria-describedby="secteur-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="secteur"
+              name="secteur_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Banque et Finance</option>
+              <option>Mobile Money</option>
+              <option>Fintech</option>
+              <option>Transfert d'argent</option>
+            </select>
+            <input
+              type="text"
+              id="secteur_custom"
+              name="secteur_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre secteur"
+              aria-required="false"
+            />
+            <div
+              id="secteur-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le secteur d'activité lié à l'entreprise
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="type_info"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Type d'information <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La catégorie générale de l'information collectée"
+                aria-describedby="type_info-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="type_info"
+              name="type_info"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Produits & Services</option>
+              <option>Expérience Client & RSE</option>
+              <option>Infrastructure & Distribution</option>
+              <option>Communication & Marketing</option>
+              <option>Analyse Concurrentielle</option>
+            </select>
+            <input
+              type="text"
+              id="type_info_custom"
+              name="type_info_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre type d'information"
+              aria-required="false"
+            />
+            <div
+              id="type_info-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La catégorie générale de l'information collectée
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="sous_categorie"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Sous-catégorie <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Une classification plus précise du type d'information"
+                aria-describedby="sous_categorie-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="sous_categorie"
+              name="sous_categorie"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Produits d'Épargne & Placement</option>
+              <option>Crédits & Financement</option>
+              <option>Services Bancaires Digitaux</option>
+              <option>Services de Paiement & Mobile Money</option>
+              <option>Parcours Client & Onboarding</option>
+              <option>Avis Clients & Satisfaction</option>
+              <option>RSE & Durabilité</option>
+              <option>Réseaux & Points de Service</option>
+              <option>Innovation & Fintech</option>
+              <option>Communication & Brand</option>
+              <option>Événementiel & Sponsoring</option>
+              <option>Benchmark Tarification</option>
+              <option>Parts de Marché & Performance</option>
+            </select>
+            <input
+              type="text"
+              id="sous_categorie_custom"
+              name="sous_categorie_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez une autre sous catégorie"
+              aria-required="false"
+            />
+            <div
+              id="sous_categorie-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Une classification plus précise du type d'information
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="date_info"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Date de l'information <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La date à laquelle l'information a été publiée ou observée"
+                aria-describedby="date_info-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="date"
+              id="date_info"
+              name="date_info"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="date_info-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La date à laquelle l'information a été publiée ou observée
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="date_collecte"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Date Collecte
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La date à laquelle les données ont été saisies (préremplie automatiquement)"
+                aria-describedby="date_collecte-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="date_collecte"
+              name="date_collecte"
+              class="w-full p-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed"
+              readonly
+            />
+            <div
+              id="date_collecte-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La date à laquelle les données ont été saisies (préremplie
+              automatiquement)
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="titre"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Titre <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Un titre concis pour résumer l'information"
+                aria-describedby="titre-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="titre"
+              name="titre"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="titre-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Un titre concis pour résumer l'information
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="description"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Description <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Un résumé ou une explication détaillée de l'information collectée"
+                aria-describedby="description-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="description-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Un résumé ou une explication détaillée de l'information collectée
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="type_source"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Type Source <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le type de média ou de méthode utilisé pour obtenir l'information"
+                aria-describedby="type_source-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="type_source"
+              name="type_source"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option>Réseaux sociaux</option>
+              <option>Presse</option>
+              <option>Site Web</option>
+              <option>Études sectorielles</option>
+              <option>Test mystères/Enquête Terrain</option>
+              <option>Avis clients</option>
+              <option>Rapports financiers</option>
+            </select>
+            <div
+              id="type_source-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le type de média ou de méthode utilisé pour obtenir l'information
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="source"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Source <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La référence spécifique de l'information (ex. : URL, nom du journal)"
+                aria-describedby="source-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <input
+              type="text"
+              id="source"
+              name="source"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+            <div
+              id="source-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La référence spécifique de l'information (ex. : URL, nom du
+              journal)
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="pays"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Pays <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="Le pays ou la région concernée par l'information"
+                aria-describedby="pays-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="pays"
+              name="pays"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option value="autre">Autre</option>
+              <option>Cameroun</option>
+              <option>Tchad</option>
+              <option>RCA</option>
+              <option>Gabon</option>
+              <option>Guinée Equatoriale</option>
+              <option>Congo-Brazaville</option>
+              <option>RDC</option>
+              <option>Cote d'ivoire</option>
+              <option>Sénegal</option>
+              <option>Mali</option>
+              <option>Burkina Faso</option>
+              <option>Togo</option>
+              <option>Benin</option>
+              <option>Guinée</option>
+              <option>Guinée-Bissau</option>
+              <option>Niger</option>
+              <option>CEMAC</option>
+              <option>UEMOA</option>
+              <option>Europe</option>
+              <option>International</option>
+            </select>
+            <input
+              type="text"
+              id="pays_custom"
+              name="pays_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre Pays"
+              aria-required="false"
+            />
+            <div
+              id="pays-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              Le pays ou la région concernée par l'information
+            </div>
+          </div>
+
+          <div class="form-group relative">
+            <label
+              for="collecteur"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Collecteur <span class="text-red-500">*</span>
+              <span
+                class="ml-1 text-gray-500 cursor-help"
+                data-tooltip="La personne responsable de la collecte de l'information"
+                aria-describedby="collecteur-tooltip"
+                >ⓘ</span
+              >
+            </label>
+            <select
+              id="collecteur"
+              name="collecteur_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option>Jude</option>
+              <option>Elie</option>
+              <option>Rostand</option>
+              <option>Ismael</option>
+              <option>Edwin</option>
+              <option>Dassi</option>
+              <option>Marius</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="collecteur_custom"
+              name="collecteur_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre collecteur"
+              aria-required="false"
+            />
+            <div
+              id="collecteur-tooltip"
+              class="hidden absolute z-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 mt-1 w-64"
+              role="tooltip"
+            >
+              La personne responsable de la collecte de l'information
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions flex justify-end space-x-4">
+          <a href="index.html" id="home-button">
+            <button
+              type="button"
+              id="back-button"
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Retour
+            </button>
+          </a>
+          <button
+            type="button"
+            id="reset-button"
+            class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            Effacer
+          </button>
+          <button
+            type="submit"
+            id="submit-button"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+          >
+            <span>Enregistrer</span>
+            <svg
+              class="hidden animate-spin h-5 w-5 ml-2 text-white"
+              id="spinner"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div id="message" class="hidden mt-4 p-4 rounded-lg text-white"></div>
+    </div>
+
+    <script>
+      // Auto-fill collection date
+      document.getElementById("date_collecte").value = new Date()
+        .toISOString()
+        .split("T")[0];
+
+      const form = document.getElementById("veille-form");
+      const submitButton = document.getElementById("submit-button");
+      const resetButton = document.getElementById("reset-button");
+      const messageDiv = document.getElementById("message");
+      const spinner = document.getElementById("spinner");
+      const etablissementSelect = document.getElementById("etablissement");
+      const etablissementCustom = document.getElementById(
+        "etablissement_custom"
+      );
+      const secteurSelect = document.getElementById("secteur");
+      const secteurCustom = document.getElementById("secteur_custom");
+      const typeInfoCustom = document.getElementById("type_info_custom");
+      const sousCategorieCustom = document.getElementById(
+        "sous_categorie_custom"
+      );
+      const collecteurSelect = document.getElementById("collecteur");
+      const collecteurCustom = document.getElementById("collecteur_custom");
+      const paysSelect = document.getElementById("pays");
+      const paysCustom = document.getElementById("pays_custom");
+
+      // Toggle custom input visibility based on selection
+      etablissementSelect.addEventListener("change", () => {
+        if (etablissementSelect.value === "autre") {
+          etablissementCustom.classList.remove("hidden");
+          etablissementCustom.required = true;
+          etablissementCustom.setAttribute("aria-required", "true");
+        } else {
+          etablissementCustom.classList.add("hidden");
+          etablissementCustom.required = false;
+          etablissementCustom.setAttribute("aria-required", "false");
+          etablissementCustom.value = "";
+        }
+      });
+
+      const typeInfoSelect = document.getElementById("type_info");
+      typeInfoSelect.addEventListener("change", () => {
+        if (typeInfoSelect.value === "autre") {
+          typeInfoCustom.classList.remove("hidden");
+          typeInfoCustom.required = true;
+          typeInfoCustom.setAttribute("aria-required", "true");
+        } else {
+          typeInfoCustom.classList.add("hidden");
+          typeInfoCustom.required = false;
+          typeInfoCustom.setAttribute("aria-required", "false");
+          typeInfoCustom.value = "";
+        }
+      });
+
+      const sousCategorieSelect = document.getElementById("sous_categorie");
+      sousCategorieSelect.addEventListener("change", () => {
+        if (sousCategorieSelect.value === "autre") {
+          sousCategorieCustom.classList.remove("hidden");
+          sousCategorieCustom.required = true;
+          sousCategorieCustom.setAttribute("aria-required", "true");
+        } else {
+          sousCategorieCustom.classList.add("hidden");
+          sousCategorieCustom.required = false;
+          sousCategorieCustom.setAttribute("aria-required", "false");
+          sousCategorieCustom.value = "";
+        }
+      });
+
+      secteurSelect.addEventListener("change", () => {
+        if (secteurSelect.value === "autre") {
+          secteurCustom.classList.remove("hidden");
+          secteurCustom.required = true;
+          secteurCustom.setAttribute("aria-required", "true");
+        } else {
+          secteurCustom.classList.add("hidden");
+          secteurCustom.required = false;
+          secteurCustom.setAttribute("aria-required", "false");
+          secteurCustom.value = "";
+        }
+      });
+
+      collecteurSelect.addEventListener("change", () => {
+        if (collecteurSelect.value === "autre") {
+          collecteurCustom.classList.remove("hidden");
+          collecteurCustom.required = true;
+          collecteurCustom.setAttribute("aria-required", "true");
+        } else {
+          collecteurCustom.classList.add("hidden");
+          collecteurCustom.required = false;
+          collecteurCustom.setAttribute("aria-required", "false");
+          collecteurCustom.value = "";
+        }
+      });
+
+      // Gestion pays
+      paysSelect.addEventListener("change", () => {
+        if (paysSelect.value === "autre") {
+          paysCustom.classList.remove("hidden");
+          paysCustom.required = true;
+          paysCustom.setAttribute("aria-required", "true");
+        } else {
+          paysCustom.classList.add("hidden");
+          paysCustom.required = false;
+          paysCustom.setAttribute("aria-required", "false");
+          paysCustom.value = "";
+        }
+      });
+
+      // Show tooltips on hover or focus
+      document.querySelectorAll("[data-tooltip]").forEach((element) => {
+        const tooltipId = element.getAttribute("aria-describedby");
+        const tooltip = document.getElementById(tooltipId);
+
+        element.addEventListener("mouseenter", () => {
+          tooltip.classList.remove("hidden");
+        });
+        element.addEventListener("mouseleave", () => {
+          tooltip.classList.add("hidden");
+        });
+        element.addEventListener("focus", () => {
+          tooltip.classList.remove("hidden");
+        });
+        element.addEventListener("blur", () => {
+          tooltip.classList.add("hidden");
+        });
+      });
+
+      resetButton.addEventListener("click", () => {
+        form.reset();
+        document.getElementById("date_collecte").value = new Date()
+          .toISOString()
+          .split("T")[0];
+
+        [
+          etablissementCustom,
+          secteurCustom,
+          collecteurCustom,
+          paysCustom,
+        ].forEach((input) => {
+          input.classList.add("hidden");
+          input.required = false;
+          input.setAttribute("aria-required", "false");
+          input.value = "";
+        });
+
+        messageDiv.classList.add("hidden");
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        messageDiv.textContent = "Envoi en cours...";
+        messageDiv.classList.remove("hidden", "bg-red-500", "bg-green-500");
+        messageDiv.classList.add("bg-yellow-500");
+        submitButton.disabled = true;
+        spinner.classList.remove("hidden");
+
+        try {
+          const formData = new FormData(form);
+          const formDataObj = {};
+
+          for (let [key, value] of formData.entries()) {
+            if (key === "type_info") {
+              formDataObj["type_info"] =
+                value === "autre"
+                  ? formData.get("type_info_custom") || ""
+                  : value;
+            } else if (key === "sous_categorie") {
+              formDataObj["sous_categorie"] =
+                value === "autre"
+                  ? formData.get("sous_categorie_custom") || ""
+                  : value;
+            } else if (key === "etablissement_select") {
+              formDataObj["etablissement"] =
+                value === "autre"
+                  ? formData.get("etablissement_custom") || ""
+                  : value;
+            } else if (key === "secteur_select") {
+              formDataObj["secteur"] =
+                value === "autre"
+                  ? formData.get("secteur_custom") || ""
+                  : value;
+            } else if (key === "collecteur_select") {
+              formDataObj["collecteur"] =
+                value === "autre"
+                  ? formData.get("collecteur_custom") || ""
+                  : value;
+            } else if (key === "pays") {
+              formDataObj["pays"] =
+                value === "autre" ? formData.get("pays_custom") || "" : value;
+            } else if (
+              ![
+                "etablissement_custom",
+                "secteur_custom",
+                "collecteur_custom",
+                "pays_custom",
+                "type_info_custom", "sous_categorie_custom"
+              ].includes(key)
+            ) {
+              formDataObj[key] = value;
+            }
+          }
+
+          if (!formDataObj["etablissement"])
+            throw new Error("Veuillez sélectionner ou entrer un établissement");
+          if (!formDataObj["secteur"])
+            throw new Error("Veuillez sélectionner ou entrer un secteur");
+          if (!formDataObj["collecteur"])
+            throw new Error("Veuillez sélectionner ou entrer un collecteur");
+          if (!formDataObj["sous_categorie"])
+            throw new Error("Veuillez sélectionner ou entrer une sous catégorie");
+          if (!formDataObj["type_info"])
+            throw new Error("Veuillez sélectionner ou entrer un type d'information");
+
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbwmd6Z7wVlNTOaeVmBi0mJH909gX05_6uDvvZixbPpHbRcDshXsaPr6jpx-HPrTd5XZ/exec";
+
+          const response = await fetch(scriptURL, {
+            method: "POST",
+            body: JSON.stringify(formDataObj),
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+          });
+
+          const data = await response.json();
+          if (data.status === "success") {
+            const { etablissement, collecteur } = formDataObj;
+            window.location.href = `confirmation_veille.html?etablissement=${encodeURIComponent(
+              etablissement
+            )}&collecteur=${encodeURIComponent(collecteur)}`;
+          } else {
+            throw new Error(data.message || "Erreur lors de l'envoi");
+          }
+        } catch (error) {
+          console.error("Erreur :", error);
+          messageDiv.textContent = "Erreur : " + error.message;
+          messageDiv.classList.remove("bg-yellow-500");
+          messageDiv.classList.add("bg-red-500");
+        } finally {
+          submitButton.disabled = false;
+          spinner.classList.add("hidden");
+          setTimeout(() => {
+            messageDiv.classList.add("hidden");
+          }, 4000);
+        }
+      });
+    </script>
+  </body>
+</html>
