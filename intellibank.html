@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="IntelliBank MI - Baromètre de l'Expérience Client : audit standardisé des agences bancaires"
+    />
+    <title>IntelliBank MI - Baromètre de l'Expérience Client</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .rating-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .rating-label {
+        cursor: pointer;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        padding: 6px 10px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 72px;
+        flex: 1 1 72px;
+        text-align: center;
+        transition: all 0.15s ease;
+        user-select: none;
+      }
+      .rating-label .rating-num {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 1.1;
+      }
+      .rating-label .rating-txt {
+        font-size: 11px;
+        color: #6b7280;
+        margin-top: 2px;
+      }
+      .rating-label:hover {
+        border-color: #3b5faa;
+      }
+      .rating-input:checked + .rating-label {
+        background: #3b5faa;
+        border-color: #3b5faa;
+        color: #fff;
+      }
+      .rating-input:checked + .rating-label .rating-txt {
+        color: #dbe4f5;
+      }
+      .rating-input:focus + .rating-label {
+        box-shadow: 0 0 0 3px rgba(59, 95, 170, 0.35);
+      }
+      .section-title {
+        border-left: 4px solid #3b5faa;
+        padding-left: 10px;
+      }
+      .photo-preview {
+        max-height: 140px;
+        border-radius: 8px;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body class="bg-blue-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <header class="flex flex-col items-center mb-8">
+        <img
+          src="logo.png"
+          alt="Logo MI Group"
+          class="h-20 mb-4 object-contain"
+          onerror="this.src='https://via.placeholder.com/150x110?text=MI+Group';"
+        />
+        <h1 class="text-2xl font-bold text-gray-800 text-center">
+          IntelliBank MI — Baromètre de l'Expérience Client
+        </h1>
+        <p class="mt-2 text-gray-600 text-center text-sm">
+          Grille d'observation standardisée MI — 8 critères
+        </p>
+      </header>
+
+      <form
+        id="intellibank-form"
+        class="bg-white p-6 rounded-xl shadow-lg"
+        method="POST"
+        action="#"
+      >
+        <!-- ============ IDENTIFICATION ============ -->
+        <h2 class="section-title text-lg font-semibold text-gray-800 mb-4">
+          Identification de la visite
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div class="form-group">
+            <label
+              for="date_collecte"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Date de la visite <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="date"
+              id="date_collecte"
+              name="date_collecte"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="auditeur"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Auditeur <span class="text-red-500">*</span>
+            </label>
+            <select
+              id="auditeur"
+              name="auditeur_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option>Jude</option>
+              <option>Elie</option>
+              <option>Rostand</option>
+              <option>Ismael</option>
+              <option>Edwin</option>
+              <option>Dassi</option>
+              <option>Marius</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="auditeur_custom"
+              name="auditeur_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez un autre auditeur"
+              aria-required="false"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="banque"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Banque <span class="text-red-500">*</span>
+            </label>
+            <select
+              id="banque"
+              name="banque_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option>Afriland First Bank</option>
+              <option>UBA</option>
+              <option>Ecobank</option>
+              <option>BICEC</option>
+              <option>SGC</option>
+              <option>SCB</option>
+              <option>Access Bank</option>
+              <option>AGB</option>
+              <option>BGFI</option>
+              <option>CCA Bank</option>
+              <option>NFC Bank</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="banque_custom"
+              name="banque_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez une autre banque"
+              aria-required="false"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="nom_agence"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nom de l'agence <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="nom_agence"
+              name="nom_agence"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              placeholder="Ex : Hippodrome, Bastos..."
+              required
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="ville"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Ville <span class="text-red-500">*</span>
+            </label>
+            <select
+              id="ville"
+              name="ville_select"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            >
+              <option value="">-- Sélectionner --</option>
+              <option>Yaoundé</option>
+              <option>Douala</option>
+              <option>Bafoussam</option>
+              <option>Ngaoundéré</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="ville_custom"
+              name="ville_custom"
+              class="hidden w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-blue-500"
+              placeholder="Entrez une autre ville"
+              aria-required="false"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="heure_debut"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Heure de début de l'audit <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="time"
+              id="heure_debut"
+              name="heure_debut"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+          </div>
+        </div>
+
+        <div class="form-group mb-6">
+          <span class="block text-sm font-medium text-gray-700 mb-1">
+            Créneau de visite <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Rappel : chaque agence doit être visitée en heure de pointe (9h-11h)
+            ET hors pointe (14h-15h30), au moins une fois par mois.
+          </p>
+          <div class="flex flex-wrap gap-2" role="radiogroup">
+            <input
+              type="radio"
+              class="rating-input"
+              id="creneau_pointe"
+              name="creneau_visite"
+              value="Heure de pointe (9h-11h)"
+              required
+            />
+            <label class="rating-label" for="creneau_pointe">
+              <span class="rating-num" style="font-size: 13px"
+                >Heure de pointe</span
+              >
+              <span class="rating-txt">9h - 11h</span>
+            </label>
+            <input
+              type="radio"
+              class="rating-input"
+              id="creneau_hors"
+              name="creneau_visite"
+              value="Hors pointe (14h-15h30)"
+            />
+            <label class="rating-label" for="creneau_hors">
+              <span class="rating-num" style="font-size: 13px">Hors pointe</span>
+              <span class="rating-txt">14h - 15h30</span>
+            </label>
+          </div>
+        </div>
+
+        <hr class="my-6 border-gray-200" />
+
+        <!-- ============ GRILLE 8 CRITERES ============ -->
+        <h2 class="section-title text-lg font-semibold text-gray-800 mb-1">
+          Grille d'observation standardisée MI
+        </h2>
+        <p class="text-xs text-gray-500 mb-5">8 critères — notation de 1 à 5</p>
+
+        <!-- Critère 1 -->
+        <div class="form-group mb-6">
+          <span class="block text-sm font-medium text-gray-700">
+            1. Comment jugez-vous la signalétique externe de l'agence ?
+            <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Enseigne visible et propre, horaires affichés à jour, panneaux
+            d'information lisibles.
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+
+        <!-- Critère 2 -->
+        <div class="form-group mb-4">
+          <span class="block text-sm font-medium text-gray-700">
+            2. Comment jugez-vous la gestion de la file d'attente ?
+            <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Système de ticket/numérotation fonctionnel, affichage du temps
+            d'attente.
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+        <div class="form-group mb-6">
+          <label
+            for="attente_minutes"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Chronométrage attente réelle (en minutes)
+            <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="number"
+            id="attente_minutes"
+            name="attente_minutes"
+            min="0"
+            max="600"
+            step="1"
+            class="w-full sm:w-1/2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            placeholder="Ex : 12"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <!-- Critère 3 -->
+        <div class="form-group mb-4">
+          <span class="block text-sm font-medium text-gray-700">
+            3. Le nombre de guichets ouverts est-il suffisant par rapport à
+            l'affluence de clients observée à ce moment ?
+            <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Comparez le nombre de guichets ouverts (question suivante) à
+            l'affluence réelle en salle. Ex : peu de guichets ouverts + file
+            longue = note basse.
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div class="form-group">
+            <label
+              for="guichets_ouverts"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nombre de guichets ouverts <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              id="guichets_ouverts"
+              name="guichets_ouverts"
+              min="0"
+              max="100"
+              step="1"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              for="guichets_total"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nombre de guichets total <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              id="guichets_total"
+              name="guichets_total"
+              min="0"
+              max="100"
+              step="1"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+          </div>
+        </div>
+
+        <!-- Critère 4 -->
+        <div class="form-group mb-6">
+          <span class="block text-sm font-medium text-gray-700">
+            4. Comment jugez-vous la propreté et l'environnement client de
+            l'agence ? <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Propreté sols/comptoirs/chaises, climatisation, niveau sonore,
+            ambiance.
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+
+        <!-- Critère 5 -->
+        <div class="form-group mb-4">
+          <span class="block text-sm font-medium text-gray-700">
+            5. Les services affichés en agence sont-ils effectivement
+            disponibles ? <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Vérification effective de chaque service affiché (WU, MoneyGram,
+            RIA, USSD...).
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+        <div class="form-group mb-6">
+          <label
+            for="services_indisponibles"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Service(s) indisponible(s) constaté(s)
+          </label>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Laisser vide si tous les services affichés sont disponibles
+          </p>
+          <input
+            type="text"
+            id="services_indisponibles"
+            name="services_indisponibles"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            placeholder="Ex : Western Union, USSD"
+          />
+        </div>
+
+        <!-- Critère 6 -->
+        <div class="form-group mb-6">
+          <span class="block text-sm font-medium text-gray-700">
+            6. Comment jugez-vous la disponibilité des supports produits
+            (brochures, tarificateurs) ? <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Brochures présentes et à jour, tarificateurs disponibles, cohérence
+            avec campagnes digitales actives.
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+
+        <!-- Critère 7 -->
+        <div class="form-group mb-6">
+          <span class="block text-sm font-medium text-gray-700">
+            7. Comment jugez-vous la qualité de l'accueil par l'agent ?
+            <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Salutation spontanée, contact visuel, uniforme soigné, réponses sur
+            promos en cours, proactivité.
+          </p>
+          <div class="rating-group flex flex-wrap gap-2" role="radiogroup"></div>
+        </div>
+
+        <!-- Critère 8 -->
+        <div class="form-group mb-4">
+          <span class="block text-sm font-medium text-gray-700">
+            8. Avez-vous observé un dispositif d'innovation non documenté lors
+            de l'édition précédente ? <span class="text-red-500">*</span>
+          </span>
+          <p class="text-xs text-gray-500 italic mb-2">
+            Tout équipement/dispositif non documenté dans l'édition précédente
+            (bornes, tablettes, QR codes, signature électronique...).
+          </p>
+          <div
+            class="rating-group flex flex-wrap gap-2"
+            role="radiogroup"
+            data-extra-aucun="true"
+          ></div>
+        </div>
+        <div class="form-group mb-6 hidden" id="innovation-desc-group">
+          <label
+            for="innovation_description"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Décrire le(s) dispositif(s) observé(s)
+            <span class="text-red-500">*</span>
+          </label>
+          <textarea
+            id="innovation_description"
+            name="innovation_description"
+            rows="3"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            placeholder="Ex : borne tactile de retrait de ticket, tablette de signature électronique..."
+          ></textarea>
+        </div>
+
+        <div
+          class="bg-blue-50 border-l-4 border-blue-400 text-blue-900 text-xs p-3 rounded mb-6"
+        >
+          <strong>Pondération du score agence</strong> (calcul effectué en aval,
+          hors formulaire) : temps d'attente réel (25%) · disponibilité services
+          (20%) · qualité accueil (20%) · propreté/signalétique (15%) ·
+          résolution scénario mystère (20%, saisie séparée).
+        </div>
+
+        <hr class="my-6 border-gray-200" />
+
+        <!-- ============ PHOTOS & FIN ============ -->
+        <h2 class="section-title text-lg font-semibold text-gray-800 mb-1">
+          Photos et clôture
+        </h2>
+        <p class="text-xs text-gray-500 mb-5">
+          Les images sont automatiquement compressées avant envoi (max ~1600
+          px).
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div class="form-group">
+            <label
+              for="photo_facade"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Photo — Façade / signalétique
+            </label>
+            <input
+              type="file"
+              id="photo_facade"
+              name="photo_facade"
+              accept="image/*"
+              capture="environment"
+              class="w-full text-sm text-gray-600"
+            />
+            <img class="photo-preview hidden" alt="Aperçu façade" />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="photo_espace_client"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Photo — Espace client
+            </label>
+            <input
+              type="file"
+              id="photo_espace_client"
+              name="photo_espace_client"
+              accept="image/*"
+              capture="environment"
+              class="w-full text-sm text-gray-600"
+            />
+            <img class="photo-preview hidden" alt="Aperçu espace client" />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="photo_innovation"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Photo — Dispositif d'innovation (si applicable)
+            </label>
+            <input
+              type="file"
+              id="photo_innovation"
+              name="photo_innovation"
+              accept="image/*"
+              capture="environment"
+              class="w-full text-sm text-gray-600"
+            />
+            <img class="photo-preview hidden" alt="Aperçu dispositif" />
+          </div>
+
+          <div class="form-group">
+            <label
+              for="heure_fin"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Heure de fin de l'audit <span class="text-red-500">*</span>
+            </label>
+            <p class="text-xs text-gray-500 italic mb-1">
+              À renseigner à la fin de la visite
+            </p>
+            <input
+              type="time"
+              id="heure_fin"
+              name="heure_fin"
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+              aria-required="true"
+            />
+          </div>
+        </div>
+
+        <!-- ============ ACTIONS ============ -->
+        <div class="flex flex-wrap justify-end gap-3 mt-8">
+          <a href="index.html">
+            <button
+              type="button"
+              id="back-button"
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              Retour
+            </button>
+          </a>
+          <button
+            type="button"
+            id="reset-button"
+            class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            Effacer
+          </button>
+          <button
+            type="submit"
+            id="submit-button"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+          >
+            <span>Enregistrer</span>
+            <svg
+              class="hidden animate-spin h-5 w-5 ml-2 text-white"
+              id="spinner"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div id="message" class="hidden mt-4 p-4 rounded-lg text-white"></div>
+
+      <footer class="mt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 MI Group. Tous droits réservés.</p>
+      </footer>
+    </div>
+
+    <script>
+      /* ====== URL du Google Apps Script (à remplacer après déploiement) ====== */
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwTGOR2ZwaPIJxxAtHfZu6x8_XxWQaSc-JWGi6SIO_Vg41VsT6hV5Wq46Mvpm-5MdsI/exec";
+
+      /* ====== Génération des échelles de notation 1-5 ====== */
+      const RATING_LABELS = [
+        "Très mauvais",
+        "Mauvais",
+        "Moyen",
+        "Bon",
+        "Excellent",
+      ];
+      const CRITERIA = [
+        "signaletique_externe",
+        "file_attente",
+        "guichets_suffisance",
+        "proprete_environnement",
+        "services_disponibles",
+        "supports_produits",
+        "qualite_accueil",
+        "innovation",
+      ];
+
+      document.querySelectorAll(".rating-group").forEach((group, index) => {
+        const name = CRITERIA[index];
+        let html = "";
+        for (let i = 1; i <= 5; i++) {
+          html += `
+            <input type="radio" class="rating-input" id="${name}_${i}"
+                   name="${name}" value="${i}" ${i === 1 ? "required" : ""} />
+            <label class="rating-label" for="${name}_${i}">
+              <span class="rating-num">${i}</span>
+              <span class="rating-txt">${RATING_LABELS[i - 1]}</span>
+            </label>`;
+        }
+        if (group.dataset.extraAucun === "true") {
+          html += `
+            <input type="radio" class="rating-input" id="${name}_aucun"
+                   name="${name}" value="Aucun dispositif observé" />
+            <label class="rating-label" for="${name}_aucun" style="flex:1 1 150px">
+              <span class="rating-num" style="font-size:13px">Aucun dispositif</span>
+              <span class="rating-txt">observé</span>
+            </label>`;
+        }
+        group.innerHTML = html;
+      });
+
+      /* ====== Références ====== */
+      const form = document.getElementById("intellibank-form");
+      const submitButton = document.getElementById("submit-button");
+      const resetButton = document.getElementById("reset-button");
+      const messageDiv = document.getElementById("message");
+      const spinner = document.getElementById("spinner");
+      const innovationDescGroup = document.getElementById(
+        "innovation-desc-group"
+      );
+      const innovationDesc = document.getElementById("innovation_description");
+
+      const CUSTOM_FIELDS = ["auditeur", "banque", "ville"];
+      const CUSTOM_LABELS = {
+        auditeur: "Auditeur",
+        banque: "Banque",
+        ville: "Ville",
+      };
+
+      /* ====== Date du jour par défaut ====== */
+      document.getElementById("date_collecte").value = new Date()
+        .toISOString()
+        .split("T")[0];
+
+      /* ====== Champs "Autre" ====== */
+      CUSTOM_FIELDS.forEach((field) => {
+        const select = document.getElementById(field);
+        const custom = document.getElementById(field + "_custom");
+        select.addEventListener("change", () => {
+          const isOther = select.value === "autre";
+          custom.classList.toggle("hidden", !isOther);
+          custom.required = isOther;
+          custom.setAttribute("aria-required", isOther ? "true" : "false");
+          if (!isOther) custom.value = "";
+        });
+      });
+
+      /* ====== Description du dispositif d'innovation ====== */
+      document.querySelectorAll('input[name="innovation"]').forEach((radio) => {
+        radio.addEventListener("change", () => {
+          const needsDesc = radio.value !== "Aucun dispositif observé";
+          innovationDescGroup.classList.toggle("hidden", !needsDesc);
+          innovationDesc.required = needsDesc;
+          if (!needsDesc) innovationDesc.value = "";
+        });
+      });
+
+      /* ====== Compression + aperçu des photos ====== */
+      const MAX_DIMENSION = 1600;
+      const JPEG_QUALITY = 0.72;
+      const photoData = {
+        photo_facade: "",
+        photo_espace_client: "",
+        photo_innovation: "",
+      };
+
+      function compressImage(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onerror = () =>
+            reject(new Error("Lecture du fichier impossible"));
+          reader.onload = () => {
+            const img = new Image();
+            img.onerror = () => reject(new Error("Image illisible"));
+            img.onload = () => {
+              let width = img.width;
+              let height = img.height;
+              const ratio = Math.min(
+                1,
+                MAX_DIMENSION / Math.max(width, height)
+              );
+              width = Math.round(width * ratio);
+              height = Math.round(height * ratio);
+
+              const canvas = document.createElement("canvas");
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext("2d");
+              ctx.fillStyle = "#ffffff";
+              ctx.fillRect(0, 0, width, height);
+              ctx.drawImage(img, 0, 0, width, height);
+              resolve(canvas.toDataURL("image/jpeg", JPEG_QUALITY));
+            };
+            img.src = reader.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      Object.keys(photoData).forEach((id) => {
+        const input = document.getElementById(id);
+        const preview = input.parentElement.querySelector(".photo-preview");
+        input.addEventListener("change", async () => {
+          const file = input.files[0];
+          if (!file) {
+            photoData[id] = "";
+            preview.classList.add("hidden");
+            return;
+          }
+          try {
+            photoData[id] = await compressImage(file);
+            preview.src = photoData[id];
+            preview.classList.remove("hidden");
+          } catch (err) {
+            photoData[id] = "";
+            preview.classList.add("hidden");
+            showMessage("Erreur photo : " + err.message, "bg-red-500");
+          }
+        });
+      });
+
+      /* ====== Message utilisateur ====== */
+      function showMessage(text, colorClass) {
+        messageDiv.textContent = text;
+        messageDiv.classList.remove(
+          "hidden",
+          "bg-red-500",
+          "bg-green-500",
+          "bg-yellow-500"
+        );
+        messageDiv.classList.add(colorClass);
+      }
+
+      /* ====== Durée de l'audit ====== */
+      function dureeMinutes(debut, fin) {
+        if (!debut || !fin) return "";
+        const [h1, m1] = debut.split(":").map(Number);
+        const [h2, m2] = fin.split(":").map(Number);
+        let diff = h2 * 60 + m2 - (h1 * 60 + m1);
+        if (diff < 0) diff += 24 * 60;
+        return diff;
+      }
+
+      /* ====== Réinitialisation ====== */
+      resetButton.addEventListener("click", () => {
+        form.reset();
+        document.getElementById("date_collecte").value = new Date()
+          .toISOString()
+          .split("T")[0];
+
+        CUSTOM_FIELDS.forEach((field) => {
+          const custom = document.getElementById(field + "_custom");
+          custom.classList.add("hidden");
+          custom.required = false;
+          custom.setAttribute("aria-required", "false");
+          custom.value = "";
+        });
+
+        innovationDescGroup.classList.add("hidden");
+        innovationDesc.required = false;
+
+        Object.keys(photoData).forEach((id) => {
+          photoData[id] = "";
+          const preview = document
+            .getElementById(id)
+            .parentElement.querySelector(".photo-preview");
+          preview.classList.add("hidden");
+          preview.removeAttribute("src");
+        });
+
+        messageDiv.classList.add("hidden");
+      });
+
+      /* ====== Envoi ====== */
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        showMessage("Envoi en cours...", "bg-yellow-500");
+        submitButton.disabled = true;
+        spinner.classList.remove("hidden");
+
+        try {
+          const formData = new FormData(form);
+          const data = {};
+
+          for (const [key, value] of formData.entries()) {
+            if (key.endsWith("_custom") || key.startsWith("photo_")) continue;
+            if (key.endsWith("_select")) {
+              const base = key.replace("_select", "");
+              data[base] =
+                value === "autre"
+                  ? (formData.get(base + "_custom") || "").trim()
+                  : value;
+            } else {
+              data[key] = value;
+            }
+          }
+
+          CUSTOM_FIELDS.forEach((field) => {
+            if (!data[field])
+              throw new Error(
+                "Veuillez sélectionner ou saisir : " + CUSTOM_LABELS[field]
+              );
+          });
+
+          if (Number(data.guichets_ouverts) > Number(data.guichets_total))
+            throw new Error(
+              "Le nombre de guichets ouverts ne peut pas dépasser le nombre total de guichets"
+            );
+
+          data.duree_audit_min = dureeMinutes(data.heure_debut, data.heure_fin);
+
+          Object.keys(photoData).forEach((id) => {
+            data[id] = photoData[id];
+          });
+
+          const response = await fetch(scriptURL, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+          });
+
+          const result = await response.json();
+          if (result.status === "success") {
+            window.location.href =
+              "confirmation_intellibank.html?banque=" +
+              encodeURIComponent(data.banque) +
+              "&agence=" +
+              encodeURIComponent(data.nom_agence) +
+              "&auditeur=" +
+              encodeURIComponent(data.auditeur);
+          } else {
+            throw new Error(result.message || "Erreur lors de l'envoi");
+          }
+        } catch (error) {
+          console.error("Erreur :", error);
+          showMessage("Erreur : " + error.message, "bg-red-500");
+          messageDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+        } finally {
+          submitButton.disabled = false;
+          spinner.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
